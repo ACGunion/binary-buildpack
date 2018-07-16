@@ -9,6 +9,7 @@ mkdir -p "$DEPS_DIR/0"
 mkdir -p "$BUILD_DIR/.profile.d"
 echo "export DEPS_DIR=\$HOME/.cloudfoundry" > "$BUILD_DIR/.profile.d/0000_set-deps-dir.sh"
 echo "export PATH=\$HOME/php/sbin:\$HOME/php/bin:\$HOME/nginx/sbin:\$PATH" > "$BUILD_DIR/.profile.d/0000_set-deps-dir.sh"
+echo "/home/vcap/app/nginx/sbin/nginx && /home/vcap/app/php/sbin/php-fpm" > "$BUILD_DIR/.profile.d/0001_run.sh"
 
 $BUILDPACK_DIR/bin/supply "$BUILD_DIR" "$CACHE_DIR" "$DEPS_DIR" 0
 $BUILDPACK_DIR/bin/finalize "$BUILD_DIR" "$CACHE_DIR" "$DEPS_DIR" 0
